@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, k;
+    float A[3][4] = {
+        {20, 5, -2, 14},
+        {3, 10, 1, 17},
+        {2, -4, 10, 23}
+    };
+    float ratio, x[3];
+
+    // Gauss Elimination
+    for(i = 0; i < 2; i++) {
+        for(j = i + 1; j < 3; j++) {
+            ratio = A[j][i] / A[i][i];
+            for(k = 0; k < 4; k++) {
+                A[j][k] = A[j][k] - ratio * A[i][k];
+            }
+        }
+    }
+
+   
+    x[2] = A[2][3] / A[2][2];
+
+    for(i = 1; i >= 0; i--) {
+        x[i] = A[i][3];
+        for(j = i + 1; j < 3; j++) {
+            x[i] = x[i] - A[i][j] * x[j];
+        }
+        x[i] = x[i] / A[i][i];
+    }
+
+    // Print Solution
+    printf("Solution:\n");
+    printf("x1 = %.3f\n", x[0]);
+    printf("x2 = %.3f\n", x[1]);
+    printf("x3 = %.3f\n", x[2]);
+
+    return 0;
+}
