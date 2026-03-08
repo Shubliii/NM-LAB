@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float x1 = 0, x2 = 0, x3 = 0;   // Initial guess
+    float new_x1, new_x2, new_x3;
+    int i;
+
+    for(i = 0; i < 10; i++) {   // 10 iterations
+
+        new_x1 = (14 - 5*x2 + 2*x3) / 20;
+        new_x2 = (17 - 3*x1 - x3) / 10;
+        new_x3 = (23 - 2*x1 + 4*x2) / 10;
+
+        x1 = new_x1;
+        x2 = new_x2;
+        x3 = new_x3;
+    }
+
+    printf("Solution after 10 iterations:\n");
+    printf("x1 = %.3f\n", x1);
+    printf("x2 = %.3f\n", x2);
+    printf("x3 = %.3f\n", x3);
+
+    return 0;
+}
